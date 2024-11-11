@@ -9,8 +9,14 @@ def pagina_inicial(request):
     return render(request, 'produtos/pagina_inicial.html')
 
 def listar_produtos(request):
-    produtos = Produto.objects.all()  # Obtém todos os produtos do banco de dados
-    return render(request, 'produtos/listar.html', {'produtos': produtos})
+    query = request.GET.get('q', '')  # Obtém o parâmetro de pesquisa da URL (caso exista)
+    
+    if query:
+        produtos = Produto.objects.filter(nome__icontains=query)  # Filtra produtos pelo nome
+    else:
+        produtos = Produto.objects.all()  # Caso não haja filtro, retorna todos os produtos
+    
+    return render(request, 'produtos/listar.html', {'produtos': produtos, 'query': query})
 
 def criar_produto(request):
     if request.method == 'POST':

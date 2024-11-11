@@ -75,3 +75,22 @@ button:hover {
     gap: 20px; /* Espaço entre os botões */
     margin-top: 20px;
 }
+
+/* Barra de pesquisa */
+
+form input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 250px;
+}
+
+form button {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

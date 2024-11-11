@@ -2,6 +2,11 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <h1>Lista de Produtos</h1>
+        <!-- Barra de Pesquisa -->
+        <form method="get" action="{% url 'listar_produtos' %}">
+            <input type="text" name="q" placeholder="Pesquisar produtos..." value="{{ query }}">
+            <button type="submit" >Buscar</button>
+        </form>
     <table>
         <tr>
             <th>E Commerce</th>
