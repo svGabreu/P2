@@ -28,10 +28,16 @@ def criar_produto(request):
         form = ProdutoForm()    
     return render(request, 'produtos/criar.html', {'form': form})
 
+#Função de deletar o produto
 def deletar_produto(request, produto_id):
-    produto = Produto.objects.get(id=produto_id)
-    produto.delete()
-    return redirect('listar_produtos')
+    produto = get_object_or_404(Produto, id=produto_id)
+
+    if request.method == 'POST': 
+        produto.delete()
+        return redirect('listar_produtos')
+
+    context = {'produto': produto}  #Passa as informações do produto para o template de confirmação
+    return render(request, 'produtos/confirm_produto_delete.html', context)
 
 def detalhes_produto(request, id):
     produto = get_object_or_404(Produto, id=id)

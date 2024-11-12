@@ -12,6 +12,8 @@
             <th>E Commerce</th>
             
         </tr>
+        <a href="{% url 'pagina_inicial' %}"><button >Voltar</button></a>
+
         {% for produto in produtos %}
     <div class="product-card">
         {% if produto.imagem %}
